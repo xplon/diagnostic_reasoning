@@ -72,8 +72,10 @@ def _short_text_items(items: list[dict[str, Any]], key: str = "text") -> list[st
     return output
 
 
-def compact_reconstruction(data: dict[str, Any], limit: int | None = None) -> dict[str, Any]:
+def compact_reconstruction(data: dict[str, Any], limit: int | None = None, offset: int = 0) -> dict[str, Any]:
     reconstructions = _as_list(data.get("reconstructions"))
+    if offset:
+        reconstructions = reconstructions[offset:]
     if limit is not None:
         reconstructions = reconstructions[:limit]
 
@@ -184,6 +186,8 @@ def _request_json(url: str, api_key: str, payload: dict[str, Any], timeout: int)
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": "Mozilla/5.0 diagnostic-reasoning-local-test",
         },
         method="POST",
     )
@@ -266,6 +270,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--markdown-output", default=str(DEFAULT_MARKDOWN_OUTPUT))
     parser.add_argument("--json-output", default=str(DEFAULT_JSON_OUTPUT))
     parser.add_argument("--case-limit", type=int)
+    parser.add_argument("--case-offset", type=int, default=0)
     parser.add_argument("--max-output-tokens", type=int, default=9000)
     parser.add_argument("--timeout", type=int, default=180)
     args = parser.parse_args(argv)
@@ -285,7 +290,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     data = json.loads(reconstruction_path.read_text(encoding="utf-8"))
-    compact_data = compact_reconstruction(data, limit=args.case_limit)
+    compact_data = compact_reconstruction(data, limit=args.case_limit, offset=args.case_offset)
     prompt = build_prompt(compact_data)
 
     try:
