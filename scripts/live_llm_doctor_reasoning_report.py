@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -28,6 +29,10 @@ def load_env_file(path: Path) -> None:
         value = value.strip().strip('"').strip("'")
         if key and key not in os.environ:
             os.environ[key] = value
+
+
+def redact_secrets(text: str) -> str:
+    return re.sub(r"sk-[A-Za-z0-9_\-\*]{4,}", "sk-***REDACTED***", text)
 
 
 def _as_list(value: Any) -> list[Any]:
@@ -239,14 +244,14 @@ def call_llm(
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
         if exc.code not in {400, 404, 405}:
-            raise RuntimeError(f"Responses API failed with HTTP {exc.code}: {body}") from exc
+            raise RuntimeError(f"Responses API failed with HTTP {exc.code}: {redact_secrets(body)}") from exc
         try:
             return "chat", call_chat_api(base_url, api_key, model, prompt, max_output_tokens, timeout)
         except urllib.error.HTTPError as chat_exc:
             chat_body = chat_exc.read().decode("utf-8", errors="replace")
             raise RuntimeError(
-                f"Responses API failed with HTTP {exc.code}: {body}\n"
-                f"Chat Completions API failed with HTTP {chat_exc.code}: {chat_body}"
+                f"Responses API failed with HTTP {exc.code}: {redact_secrets(body)}\n"
+                f"Chat Completions API failed with HTTP {chat_exc.code}: {redact_secrets(chat_body)}"
             ) from chat_exc
 
 
@@ -293,8 +298,12 @@ def main(argv: list[str] | None = None) -> int:
             args.max_output_tokens,
             args.timeout,
         )
-    except (RuntimeError, urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError) as exc:
-        print(f"Real LLM call failed: {exc}", file=sys.stderr)
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        print(f"Real LLM call failed with HTTP {exc.code}: {redact_secrets(body)}", file=sys.stderr)
+        return 1
+    except (RuntimeError, urllib.error.URLError, TimeoutError, ValueError) as exc:
+        print(f"Real LLM call failed: {redact_secrets(str(exc))}", file=sys.stderr)
         return 1
 
     report_text = extract_text(response)
