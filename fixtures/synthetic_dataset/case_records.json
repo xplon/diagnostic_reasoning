@@ -1,0 +1,47 @@
+{
+  "case_records": [
+    {
+      "case_id": "case_synth_002",
+      "patient_id": "pt_synth_001",
+      "patient_timeline_id": "ptl_synth_001",
+      "target_report_id": "report_synth_002",
+      "related_report_ids": ["report_synth_001"],
+      "evaluation_eligible": true,
+      "report_scope": "cbc_phase1",
+      "split": "development",
+      "doctor_gold_recommendation": "白细胞正常 中性粒偏低 血小板较前进一步下降 打一针短效升白针 打一针升血小板针",
+      "gold_actions": ["neutrophil_support_review", "platelet_support_review"],
+      "gold_reasoning_atoms": [
+        {"type": "fact", "analyte": "WBC", "vs_ref": "within_local"},
+        {"type": "fact", "analyte": "ANC", "vs_ref": "below_local_lower"},
+        {"type": "fact", "analyte": "PLT", "vs_ref": "below_local_lower"},
+        {"type": "trend", "analyte": "PLT", "direction": "down", "verdict": "substantial"},
+        {"type": "intervention_target", "action": "neutrophil_support_review"},
+        {"type": "intervention_target", "action": "platelet_support_review"}
+      ],
+      "ai_output": {"candidate_actions": [], "reasoning_atoms": [], "safety_violations": []},
+      "metadata": {"synthetic": true}
+    },
+    {
+      "case_id": "case_synth_003",
+      "patient_id": "pt_synth_002",
+      "patient_timeline_id": "ptl_synth_002",
+      "target_report_id": "report_synth_003",
+      "related_report_ids": [],
+      "evaluation_eligible": true,
+      "report_scope": "cbc_phase1",
+      "split": "development",
+      "doctor_gold_recommendation": "挺好的",
+      "gold_actions": ["monitoring_review"],
+      "gold_reasoning_atoms": [
+        {"type": "fact", "analyte": "WBC", "vs_ref": "within_local"},
+        {"type": "fact", "analyte": "ANC", "vs_ref": "within_local"},
+        {"type": "fact", "analyte": "Hb", "vs_ref": "within_local"},
+        {"type": "fact", "analyte": "PLT", "vs_ref": "within_local"},
+        {"type": "intervention_target", "action": "monitoring_review"}
+      ],
+      "ai_output": {"candidate_actions": [], "reasoning_atoms": [], "safety_violations": []},
+      "metadata": {"synthetic": true}
+    }
+  ]
+}

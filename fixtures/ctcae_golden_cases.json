@@ -1,0 +1,12 @@
+{
+  "cases": [
+    {"analyte": "Hb", "value": 12.7, "unit": "g/dL", "ref": [11.5, 15.0], "expected_value": 127.0, "expected_grade": "not_anemic_by_local_range"},
+    {"analyte": "ANC", "value": 1.55, "unit": "10^9/L", "ref": [1.8, 6.3], "expected_grade": "grade1"},
+    {"analyte": "ANC", "value": 0.31, "unit": "10^9/L", "ref": [1.8, 6.3], "expected_grade": "grade4"},
+    {"analyte": "PLT", "value": 60, "unit": "10^9/L", "ref": [125, 350], "expected_grade": "grade2"},
+    {"analyte": "PLT", "value": 24, "unit": "10^9/L", "ref": [125, 350], "expected_grade": "grade4"},
+    {"analyte": "Hb", "value": 99, "unit": "g/L", "ref": [115, 150], "expected_grade": "grade2"},
+    {"analyte": "Hb", "value": 79, "unit": "g/L", "ref": [115, 150], "expected_grade": "grade3"},
+    {"analyte": "WBC", "value": 2.5, "unit": "10^9/L", "ref": [3.5, 9.5], "expected_grade": "grade2"}
+  ]
+}

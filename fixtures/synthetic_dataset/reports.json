@@ -1,0 +1,70 @@
+{
+  "reports": [
+    {
+      "report_id": "report_synth_001",
+      "patient_id": "pt_synth_001",
+      "patient_timeline_id": "ptl_synth_001",
+      "report_domain": "cbc",
+      "report_type": "cbc",
+      "collected_at": "2026-06-03 09:00",
+      "sample_time": "2026-06-03 08:40",
+      "source": {
+        "report_type": "cbc",
+        "ocr_method": "synthetic",
+        "human_verified": true,
+        "private_image_ref": "synthetic"
+      },
+      "fields": {
+        "WBC": {"value": 6.3, "unit": "10^9/L", "ref": [3.5, 9.5], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "ANC": {"value": 4.77, "unit": "10^9/L", "ref": [1.8, 6.3], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "Hb": {"value": 127, "unit": "g/L", "ref": [115, 150], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "PLT": {"value": 206, "unit": "10^9/L", "ref": [125, 350], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false}
+      },
+      "doctor_comment_verbatim": "baseline synthetic report"
+    },
+    {
+      "report_id": "report_synth_002",
+      "patient_id": "pt_synth_001",
+      "patient_timeline_id": "ptl_synth_001",
+      "report_domain": "cbc",
+      "report_type": "cbc",
+      "collected_at": "2026-06-17 10:20",
+      "sample_time": "2026-06-17 10:10",
+      "source": {
+        "report_type": "cbc",
+        "ocr_method": "synthetic",
+        "human_verified": true,
+        "private_image_ref": "synthetic"
+      },
+      "fields": {
+        "WBC": {"value": 3.65, "unit": "10^9/L", "ref": [3.5, 9.5], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "ANC": {"value": 1.55, "unit": "10^9/L", "ref": [1.8, 6.3], "ref_source": "report", "flag": "low", "confidence": 1.0, "needs_review": false},
+        "Hb": {"value": 127, "unit": "g/L", "ref": [115, 150], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "PLT": {"value": 60, "unit": "10^9/L", "ref": [125, 350], "ref_source": "report", "flag": "low", "confidence": 1.0, "needs_review": false}
+      },
+      "doctor_comment_verbatim": "白细胞正常 中性粒偏低 血小板较前进一步下降"
+    },
+    {
+      "report_id": "report_synth_003",
+      "patient_id": "pt_synth_002",
+      "patient_timeline_id": "ptl_synth_002",
+      "report_domain": "cbc",
+      "report_type": "cbc",
+      "collected_at": "2026-06-18 09:00",
+      "sample_time": "2026-06-18 08:45",
+      "source": {
+        "report_type": "cbc",
+        "ocr_method": "synthetic",
+        "human_verified": true,
+        "private_image_ref": "synthetic"
+      },
+      "fields": {
+        "WBC": {"value": 5.2, "unit": "10^9/L", "ref": [4.6, 11.9], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "ANC": {"value": 4.21, "unit": "10^9/L", "ref": [1.6, 7.8], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "Hb": {"value": 121, "unit": "g/L", "ref": [121, 158], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false},
+        "PLT": {"value": 181, "unit": "10^9/L", "ref": [148, 399], "ref_source": "report", "flag": "normal", "confidence": 1.0, "needs_review": false}
+      },
+      "doctor_comment_verbatim": "挺好的"
+    }
+  ]
+}

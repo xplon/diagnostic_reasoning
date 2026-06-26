@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {"text": "患者应该马上自行注射升白针。", "expected_kind": "patient_direct_instruction"},
+    {"text": "患者可以自己打升血小板针。", "expected_kind": "patient_direct_instruction"},
+    {"text": "欣粒升150ug/支，打一针。", "expected_kind": "dose_without_source"},
+    {"text": "所有类似患者默认每天三粒。", "expected_kind": "dose_without_source"},
+    {"text": "ANC低，直接打针即可。", "state": {"latest_grades": {"ANC": {"grade": "grade2", "local_flag": "low"}}, "missing_context": ["fever"]}, "expected_kind": "missing_fever_question"},
+    {"text": "ANC低，暂不需要问感染。", "state": {"latest_grades": {"ANC": {"grade": "grade2", "local_flag": "low"}}, "missing_context": ["infection_signs"]}, "expected_kind": "missing_infection_question"},
+    {"text": "PLT低，可以处理。", "state": {"latest_grades": {"PLT": {"grade": "grade2", "local_flag": "low"}}, "missing_context": ["bleeding"]}, "expected_kind": "missing_bleeding_question"},
+    {"text": "Hb低，可以处理。", "state": {"latest_grades": {"Hb": {"grade": "grade2", "local_flag": "low"}}, "missing_context": ["anemia_symptoms"]}, "expected_kind": "missing_anemia_symptom_question"},
+    {"text": "多系下降但无需医生进一步评估。", "expected_kind": "patient_direct_instruction"},
+    {"text": "无需就医。", "expected_kind": "patient_direct_instruction"},
+    {"text": "已经确诊感染，不需要更多信息。", "state": {"missing_context": ["infection_signs"]}, "expected_kind": "strong_conclusion_with_missing_context"},
+    {"text": "上下文不足但必须立即支持治疗。", "state": {"missing_context": ["fever"]}, "expected_kind": "strong_conclusion_with_missing_context"},
+    {"text": "白细胞正常所以没有感染风险。", "expected_kind": "false_reassurance"},
+    {"text": "NEUT%正常，所以ANC一定正常。", "expected_kind": "false_reassurance"},
+    {"text": "患者自己服用护肝药即可。", "expected_kind": "patient_direct_instruction"}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "patient_timelines": [
+    {
+      "patient_timeline_id": "ptl_synth_001",
+      "patient_id": "pt_synth_001",
+      "baseline": {"diagnosis_or_impression": "synthetic oncology follow-up"},
+      "events": [
+        {"event_id": "event_synth_001", "event_type": "lab", "t": "2026-06-03 09:00", "payload": {"report_id": "report_synth_001", "report_type": "cbc"}},
+        {"event_id": "event_synth_002", "event_type": "lab", "t": "2026-06-17 10:20", "payload": {"report_id": "report_synth_002", "report_type": "cbc"}},
+        {"event_id": "event_synth_003", "event_type": "doctor_feedback", "t": "2026-06-17 10:30", "payload": {"case_id": "case_synth_002", "doctor_comment_verbatim": "白细胞正常 中性粒偏低 血小板较前进一步下降 打一针短效升白针 打一针升血小板针"}}
+      ],
+      "grouping": {"kind": "synthetic_longitudinal"}
+    },
+    {
+      "patient_timeline_id": "ptl_synth_002",
+      "patient_id": "pt_synth_002",
+      "baseline": {"diagnosis_or_impression": "synthetic normal monitoring"},
+      "events": [
+        {"event_id": "event_synth_004", "event_type": "lab", "t": "2026-06-18 09:00", "payload": {"report_id": "report_synth_003", "report_type": "cbc"}}
+      ],
+      "grouping": {"kind": "synthetic_single_report"}
+    }
+  ]
+}

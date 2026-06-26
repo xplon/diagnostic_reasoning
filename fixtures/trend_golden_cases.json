@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "analyte": "PLT",
+      "from": 206,
+      "to": 60,
+      "expected_delta_pct": -70.9,
+      "expected_direction": "down",
+      "expected_verdict": "substantial"
+    },
+    {
+      "analyte": "ANC",
+      "from": 4.77,
+      "to": 1.55,
+      "expected_delta_pct": -67.5,
+      "expected_direction": "down",
+      "expected_verdict": "substantial"
+    }
+  ]
+}
